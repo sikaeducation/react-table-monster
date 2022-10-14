@@ -1,12 +1,7 @@
-import { useMemo, useCallback, useContext } from "react";
-import { selectedRowContext } from "./SelectedRowProvider";
-
-export default function TableRow({ row }) {
-  const { selectedId, setSelectedId } = useContext(selectedRowContext);
-  const select = useCallback((id) => setSelectedId(id), [setSelectedId]);
+export default function TableRow({ row, selectedId, setSelectedId }) {
+  const select = (id) => setSelectedId(id)
   const isSelected = row.id === selectedId;
 
-  return useMemo(() => {
     const { id } = row;
     return (
       <tr
@@ -23,6 +18,5 @@ export default function TableRow({ row }) {
         <td>{Math.round(Math.random() * 10)}</td>
       </tr>
     );
-  }, [row, select, isSelected]);
 }
 
