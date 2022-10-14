@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import SelectedRowProvider from "./SelectedRowProvider";
+import "./App.css";
+import TableRow from "./TableRow";
+import rows from "./data";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <table>
+        <tbody>
+          <SelectedRowProvider>
+            {rows.map((row) => (
+              <TableRow key={row.id} row={row} />
+            ))}
+          </SelectedRowProvider>
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default App;
